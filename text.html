@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lấy JSON bằng jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Dữ liệu từ tongHop.json</h1>
+    <ul id="jsonDataList"></ul>
+
+    <script>
+        // Đường dẫn đến file JSON
+        const jsonFilePath = '/content/tongHop.json';
+
+        // Mảng để lưu dữ liệu JSON
+        let dataArray = [];
+
+        // Sử dụng jQuery để lấy dữ liệu JSON
+        $.getJSON(jsonFilePath, function(data) {
+            // Lưu dữ liệu vào mảng
+            dataArray = data;
+
+            // Hiển thị dữ liệu trong mảng ra console (kiểm tra)
+            console.log(dataArray);
+
+            // Duyệt qua mảng và hiển thị lên trang web
+            dataArray.forEach(item => {
+                $('#jsonDataList').append(`<li>${JSON.stringify(item)}</li>`);
+            });
+        })
+        .fail(function() {
+            console.log("Không thể tải file JSON.");
+        });
+    </script>
+
+</body>
+</html>
