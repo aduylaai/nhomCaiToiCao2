@@ -29,6 +29,7 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        format: "json",
         name: "post",
         label: "Posts",
         path: "content/posts",
